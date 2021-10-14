@@ -1,0 +1,43 @@
+.search-form {
+  position: relative;
+}
+
+.search-form > span {
+  position: relative;
+  right: 2.5rem;
+  top: 0.3rem;
+  cursor: pointer;
+}
+
+.searchbox {
+  width: 400px;
+}
+
+i.fa-cart-plus {
+    font-size: 2rem !important;
+}
+
+.cart-badge {
+    font-size: 0.75rem;
+    position: relative;
+    top: 0.4rem;
+    right: 0.4rem;
+}
+
+/* breakpoint --lg */
+@media screen and (max-width: 992px) {
+  .w-lg-100 {
+    width: 80vw;
+    display: flex;
+    flex-grow: 1;
+  }
+
+  .search-form {
+    margin-top: 2rem;
+  }
+
+  .right-content {
+      margin-top: 1rem;
+      flex-direction: row;
+  }
+}
