@@ -11,7 +11,7 @@
 }
 
 ::-webkit-scrollbar-button {
-    background: red;
+    background: #0d6efd;
 }
 
 .product>img:hover {

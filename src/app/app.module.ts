@@ -8,6 +8,8 @@ import { FooterComponent } from './footer/footer.component';
 import { HomepageCarouselComponent } from './homepage-carousel/homepage-carousel.component';
 import { CategoryDisplayComponent } from './category-display/category-display.component';
 import { CategoryFilterNavbarComponent } from './category-filter-navbar/category-filter-navbar.component';
+import { CartComponent } from './pages/cart/cart.component';
+import { HomeComponent } from './pages/home/home.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,9 @@ import { CategoryFilterNavbarComponent } from './category-filter-navbar/category
     FooterComponent,
     HomepageCarouselComponent,
     CategoryDisplayComponent,
-    CategoryFilterNavbarComponent
+    CategoryFilterNavbarComponent,
+    CartComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
