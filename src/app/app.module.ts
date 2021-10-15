@@ -7,6 +7,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { HomepageCarouselComponent } from './homepage-carousel/homepage-carousel.component';
 import { CategoryDisplayComponent } from './category-display/category-display.component';
+import { CategoryFilterNavbarComponent } from './category-filter-navbar/category-filter-navbar.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { CategoryDisplayComponent } from './category-display/category-display.co
     NavbarComponent,
     FooterComponent,
     HomepageCarouselComponent,
-    CategoryDisplayComponent
+    CategoryDisplayComponent,
+    CategoryFilterNavbarComponent
   ],
   imports: [
     BrowserModule,
