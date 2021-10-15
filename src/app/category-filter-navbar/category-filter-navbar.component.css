@@ -1,0 +1,16 @@
+.shadow-btm {
+    box-shadow: 0 0.1rem 1rem #999;
+}
+
+div > div {
+    cursor: pointer;
+}
+
+div > div:hover {
+    color: #0d6efd;
+}
+
+img {
+    height: 64px;
+    width: 64px;
+}
