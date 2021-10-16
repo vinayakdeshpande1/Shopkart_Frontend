@@ -15,22 +15,22 @@
   </div>
 
   <ng-template #elseBlock>
-    <template class="d-flex shadom-sm border-bottom my-4" *ngFor="let item of cart">
-      <img style="height: 150px;" class="me-5"
+    <template class="carts d-flex justify-content-center align-items-center justify-content-sm-start flex-column flex-sm-row shadom-sm border-bottom my-4" *ngFor="let item of cart">
+      <img style="height: 150px; width: fit-content;" class="me-5"
         src="https://rukminim1.flixcart.com/www/800/800/promos/16/05/2019/d438a32e-765a-4d8b-b4a6-520b560971e8.png?q=90"
         alt="">
       <div class="cart-product text-start">
         <h4>{{ item.name }}</h4>
         <strong class="d-block my-3">Rs. {{ item.price }}</strong>
         <button class="btn btn-secondary" (click)="decreaseItemCount(item)">-</button>
-        <span>{{ item.quantity }}</span>
+        <button class="btn btn-muted item-quantity">{{ item.quantity }}</button>
         <button class="btn btn-secondary" (click)="increaseItemCount(item)">+</button>
         <button class="ms-3 btn btn-outline-secondary" (click)="removeFromCart(item)">Remove</button>
       </div>
     </template>
-    <div class="d-flex justify-content-between align-items-center">
+    <div class="d-flex flex-column flex-sm-row justify-content-between align-items-center">
       <span class="d-flex fw-bold">Order Total: <span class="ms-2 text-danger">Rs. {{ orderTotal() }}/-</span></span>
-      <button class="btn btn-danger my-2 ms-auto d-flex py-2 px-5" (click)="placeOrder()">Place Order</button>
+      <button class="btn btn-danger my-3 py-2 px-5" (click)="placeOrder()">Place Order</button>
     </div>
   </ng-template>
 </div>
