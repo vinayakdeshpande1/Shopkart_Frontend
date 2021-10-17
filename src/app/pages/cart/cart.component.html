@@ -8,14 +8,18 @@
     <p class="fs-5">Missing cart items?</p>
     <p class="" *ngIf="!isLoggedIn; else shopNowText">Login to see the items you added previously</p>
     <ng-template class="" #shopNowText>Shop now to add items to the cart</ng-template>
-    <button *ngIf="!isLoggedIn; else shopNowBtn" class="btn btn-danger rounded-0 py-2 px-5" routerLink="/login">Login</button>
+    <button *ngIf="!isLoggedIn; else shopNowBtn" class="btn btn-danger rounded-0 py-2 px-5"
+      routerLink="/login">Login</button>
     <ng-template #shopNowBtn class="btn btn-danger rounded-0 py-2 px-5"><button
-        class="btn btn-primary text-light rounded-0 py-2 px-5 d-block mx-auto my-2" routerLink="/">Shop Now</button></ng-template>
+        class="btn btn-primary text-light rounded-0 py-2 px-5 d-block mx-auto my-2" routerLink="/">Shop Now</button>
+    </ng-template>
 
   </div>
 
   <ng-template #elseBlock>
-    <template class="carts d-flex justify-content-center align-items-center justify-content-sm-start flex-column flex-sm-row shadom-sm border-bottom my-4" *ngFor="let item of cart">
+    <template
+      class="carts d-flex justify-content-center align-items-center justify-content-sm-start flex-column flex-sm-row shadom-sm border-bottom my-4"
+      *ngFor="let item of cart">
       <img style="height: 150px; width: fit-content;" class="me-5"
         src="https://rukminim1.flixcart.com/www/800/800/promos/16/05/2019/d438a32e-765a-4d8b-b4a6-520b560971e8.png?q=90"
         alt="">
