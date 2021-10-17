@@ -26,7 +26,7 @@
               <i class="fa fa-phone mr-3"></i>
             </span>
           </div>
-          <input type="number" class="form-control" placeholder="Phone Number" aria-label="phone number">
+          <input type="number" class="form-control" placeholder="Phone Number" aria-label="phone number" minlength="10">
         </div>
         <div class="form-group input-group mb-4">
           <div class="input-group-prepend">
@@ -35,7 +35,7 @@
             </span>
           </div>
           <input type="password" class="form-control" id="password" placeholder="password" formControlName="password"
-            required="/required" aria-label="password">
+            required="/required" aria-label="password" minlength="8">
         </div>
         <div class="form-group input-group mb-4">
           <div class="input-group-prepend">
@@ -44,10 +44,10 @@
             </span>
           </div>
           <input type="password" class="form-control" id="confirm-password" placeholder="Confirm Password"
-            formControlName="password" required="required" aria-label="conform-password">
+            formControlName="password" required="required" aria-label="conform-password" minlength="8">
         </div>
         <div class="d-flex justify-content-center">
-          <button type="button" class="btn btn-primary text-light btn-block btn-lg gradient-custom-4">Register</button>
+          <button type="submit" class="btn btn-primary text-light btn-block btn-lg gradient-custom-4">Register</button>
         </div>
         <p class="text-center text-muted mt-4 mb-0">Have already an account? <a routerLink="/login"
             class="ms- 2 fw-bold text-body"><u>Login here</u></a></p>
