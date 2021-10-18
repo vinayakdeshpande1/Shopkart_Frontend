@@ -1,5 +1,7 @@
+import { Route } from '@angular/compiler/src/core';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup,FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signup',
@@ -14,7 +16,7 @@ export class SignupComponent implements OnInit {
     email:new FormControl(''),
     password:new FormControl('')
   })
-  constructor() { 
+  constructor(private router:Router) { 
 
   }
   ngOnInit(): void {
@@ -22,6 +24,11 @@ export class SignupComponent implements OnInit {
   collectInfo()
   {
     console.warn(this.signUp.value)
+  }
+
+  register() {
+    alert("Registration Successfull!!")
+    this.router.navigate(["/login"]);
   }
 
 }
