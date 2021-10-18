@@ -7,10 +7,10 @@
     <div class="products d-flex justify-content- overflow-auto my-2 py-2" style="position: relative;">
         <!-- <button>Prev</button> -->
         <div class="product text-center mx-4" *ngFor="let i of product">
-            <img src="https://rukminim1.flixcart.com/image/150/150/krxtrww0/shoe/3/b/o/10-sx0677g-sparx-turkeyblueblack-original-imag5mcfzuvssh8y.jpeg?q=70" alt="">
+            <img src="{{category_img}}" alt="" style="height: 150px">
             <h6 class="product-title">Season's Best Seller</h6>
             <p class="discount">50-80% off</p>
-            <p class="sub-category">Men's Sneakers</p>
+            <p class="sub-category">{{ product_name }}</p>
         </div>
         <!-- <button>Next</button> -->
     </div>

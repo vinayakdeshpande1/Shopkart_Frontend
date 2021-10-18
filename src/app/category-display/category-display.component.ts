@@ -8,6 +8,8 @@ import { Component, Input, OnInit } from '@angular/core';
 export class CategoryDisplayComponent implements OnInit {
 
   @Input() category_name: String = '';
+  @Input() category_img: String = '';
+  @Input() product_name: String = '';
   constructor() { }
 
   ngOnInit(): void {
