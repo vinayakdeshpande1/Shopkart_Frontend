@@ -4,6 +4,7 @@ import { CartComponent } from './pages/cart/cart.component';
 import { HomeComponent } from './pages/home/home.component';
 import {SignupComponent} from './signup/signup.component';
 import {LoginComponent} from './login/login.component';
+import { ViewAllPageComponent } from './view-all-page/view-all-page.component';
 const routes: Routes = [
   {
     path: "",
@@ -20,6 +21,10 @@ const routes: Routes = [
   {
     component:LoginComponent,
     path:"login"
+  },
+  {
+    component: ViewAllPageComponent,
+    path: "category/:cat_name"
   }
 ];
 
