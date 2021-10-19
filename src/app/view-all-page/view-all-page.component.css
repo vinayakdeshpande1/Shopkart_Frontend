@@ -1,0 +1,16 @@
+.card {
+    transition: box-shadow 500ms ease, transform 400ms ease-in-out;
+    -webkit-transition: box-shadow 500ms ease, transform 400ms ease-in-out;
+    -moz-transition: box-shadow 500ms ease, transform 400ms ease-in-out;
+    -ms-transition: box-shadow 500ms ease, transform 400ms ease-in-out;
+    -o-transition: box-shadow 500ms ease, transform 400ms ease-in-out;
+}
+
+.card:hover {
+    box-shadow: 0 0 0.4rem #888;
+    transform: rotate(-0.4deg);
+    -webkit-transform: rotate(-0.4deg);
+    -moz-transform: rotate(-0.4deg);
+    -ms-transform: rotate(-0.4deg);
+    -o-transform: rotate(-0.4deg);
+}
