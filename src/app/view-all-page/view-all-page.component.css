@@ -14,3 +14,19 @@
     -ms-transform: rotate(-0.4deg);
     -o-transform: rotate(-0.4deg);
 }
+
+img {
+    transition: transform 600ms ease-out;
+    -webkit-transition: transform 600ms ease-out;
+    -moz-transition: transform 600ms ease-out;
+    -ms-transition: transform 600ms ease-out;
+    -o-transition: transform 600ms ease-out;
+}
+
+.card:hover img {
+    transform: scale(1.1);
+    -webkit-transform: scale(1.1);
+    -moz-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    -o-transform: scale(1.1);
+}
