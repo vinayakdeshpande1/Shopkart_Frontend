@@ -14,6 +14,7 @@ import { LoginComponent } from './login/login.component';
 import { ViewAllPageComponent } from './view-all-page/view-all-page.component';
 import { ViewComponent } from './view/view.component';
 import { FormsModule } from '@angular/forms';
+import { OrderSuccessComponent } from './order-success/order-success.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { FormsModule } from '@angular/forms';
     LoginComponent,
     ViewAllPageComponent,
     ViewComponent,
+    OrderSuccessComponent,
   ],
   imports: [
     BrowserModule,

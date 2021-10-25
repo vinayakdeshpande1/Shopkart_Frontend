@@ -6,6 +6,7 @@ import {SignupComponent} from './signup/signup.component';
 import {LoginComponent} from './login/login.component';
 import { ViewAllPageComponent } from './view-all-page/view-all-page.component';
 import { ViewComponent } from './view/view.component';
+
 const routes: Routes = [
   {
     path: "",
@@ -30,7 +31,7 @@ const routes: Routes = [
   {
     component: ViewComponent,
     path: "view"
-  }
+  },
 ];
 
 @NgModule({
