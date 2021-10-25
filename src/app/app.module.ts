@@ -12,8 +12,8 @@ import { HomeComponent } from './pages/home/home.component';
 import { SignupComponent } from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
 import { ViewAllPageComponent } from './view-all-page/view-all-page.component';
+import { ViewComponent } from './view/view.component';
 import { FormsModule } from '@angular/forms';
-import { PlaceOrderComponent } from './place-order/place-order.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +28,7 @@ import { PlaceOrderComponent } from './place-order/place-order.component';
     SignupComponent,
     LoginComponent,
     ViewAllPageComponent,
-    PlaceOrderComponent
+    ViewComponent,
   ],
   imports: [
     BrowserModule,
