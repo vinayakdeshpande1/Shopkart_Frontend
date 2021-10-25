@@ -16,6 +16,6 @@ export class ViewAllPageComponent implements OnInit {
     alert("Product added to Cart")
   }
 
-  product = [1, 2, 3, 4, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5]
+  product = [1, 2, 3, 4, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5]
 
 }

@@ -30,3 +30,7 @@ img {
     -ms-transform: scale(1.1);
     -o-transform: scale(1.1);
 }
+
+.single-product {
+    cursor: pointer;
+}
