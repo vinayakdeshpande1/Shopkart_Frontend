@@ -21,3 +21,7 @@
     -ms-transform: scale(1.03);
     -o-transform: scale(1.03);
 }
+
+.product {
+    cursor: pointer;
+}
