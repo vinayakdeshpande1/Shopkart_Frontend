@@ -14,6 +14,7 @@ import { LoginComponent } from './login/login.component';
 import { ViewAllPageComponent } from './view-all-page/view-all-page.component';
 import { ViewComponent } from './view/view.component';
 import { FormsModule } from '@angular/forms';
+import { MyAccountComponent } from './my-account/my-account.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { FormsModule } from '@angular/forms';
     LoginComponent,
     ViewAllPageComponent,
     ViewComponent,
+    MyAccountComponent,
   ],
   imports: [
     BrowserModule,
