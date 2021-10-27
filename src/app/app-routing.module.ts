@@ -7,6 +7,7 @@ import {LoginComponent} from './login/login.component';
 import { ViewAllPageComponent } from './view-all-page/view-all-page.component';
 import { ViewComponent } from './view/view.component';
 import { MyAccountComponent } from './my-account/my-account.component';
+import { MyordersComponent } from './myorders/myorders.component';
 
 const routes: Routes = [
   {
@@ -34,8 +35,22 @@ const routes: Routes = [
     path: "view"
   },
   {
+    path: "me",
+    redirectTo: "me/details",
+  },
+  {
+    path: "me",
     component: MyAccountComponent,
-    path: "me"
+    children: [
+      {
+        path: "details",
+        component: MyordersComponent,
+      },
+      {
+        path: "orders",
+        component: MyordersComponent,
+      },
+    ]
   }
 ];
 
