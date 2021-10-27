@@ -7,7 +7,8 @@ import {LoginComponent} from './login/login.component';
 import { ViewAllPageComponent } from './view-all-page/view-all-page.component';
 import { ViewComponent } from './view/view.component';
 import { MyAccountComponent } from './my-account/my-account.component';
-import { MyordersComponent } from './myorders/myorders.component';
+import { MyordersComponent } from './my-account/myorders/myorders.component';
+import { DetailsComponent } from './my-account/details/details.component';
 
 const routes: Routes = [
   {
@@ -44,7 +45,7 @@ const routes: Routes = [
     children: [
       {
         path: "details",
-        component: MyordersComponent,
+        component: DetailsComponent,
       },
       {
         path: "orders",

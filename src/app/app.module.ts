@@ -15,7 +15,8 @@ import { ViewAllPageComponent } from './view-all-page/view-all-page.component';
 import { ViewComponent } from './view/view.component';
 import { FormsModule } from '@angular/forms';
 import { MyAccountComponent } from './my-account/my-account.component';
-import { MyordersComponent } from './myorders/myorders.component';
+import { MyordersComponent } from './my-account/myorders/myorders.component';
+import { DetailsComponent } from './my-account/details/details.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { MyordersComponent } from './myorders/myorders.component';
     ViewComponent,
     MyAccountComponent,
     MyordersComponent,
+    DetailsComponent,
   ],
   imports: [
     BrowserModule,
