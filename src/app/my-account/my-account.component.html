@@ -1,26 +1,31 @@
-<section class="container my-5">
-  <aside class="mb-3 col-12 col-sm-6 col-md-3">
+<section class="container my-5 d-md-flex">
+  <aside class="mb-3 me-2 col-12 col-md-3 h-100 d-flex flex-column justify-content-between">
     <div class="card mb-2">
-        <div class="row g-0">
-          <div class="col-md-4 d-flex align-items-center justify-content-center">
-            <img src="https://static-assets-web.flixcart.com/www/linchpin/fk-cp-zion/img/profile-pic-male_4811a1.svg"
-              class="img-fluid rounded-start" alt="">
-          </div>
-          <div class="col-md-8">
-            <div class="card-body">
-              <small>Hello, </small>
-              <h5 class="card-title">Abhijeet Dhanwate</h5>
-            </div>
+      <div class="row g-0">
+        <div class="col-md-4 d-flex align-items-center justify-content-center">
+          <img src="https://static-assets-web.flixcart.com/www/linchpin/fk-cp-zion/img/profile-pic-male_4811a1.svg"
+            class="img-fluid rounded-start" alt="">
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <small>Hello, </small>
+            <h5 class="card-title">Abhijeet Dhanwate</h5>
           </div>
         </div>
+      </div>
     </div>
-    <div class="card mb-0 pb-0">
-        <ul class="list-unstyled mb-0">
-            <li class="h6 px-3 py-3 d-flex align-items-center border-bottom border-2 list-item"><i class="fas fa-user-circle fa-2x text-primary ms-3 me-4"></i>My Account</li>
-            <li class="h6 px-3 py-3 d-flex align-items-center border-bottom border-2 list-item"><i class="fas fa-truck fa-2x text-primary ms-3 me-4"></i>My Orders</li>
-            <li class="h6 px-3 py-3 d-flex align-items-center border-bottom border-2 list-item"><i class="fas fa-sign-out-alt fa-2x text-primary ms-3 me-4"></i>Logout</li>
-        </ul>
+    <div class="card">
+      <ul class="list-unstyled">
+        <li routerLink="details" class="h6 px-3 py-3 d-flex align-items-center border-bottom border-2 list-item"><i
+            class="fas fa-user-circle fa-2x text-primary ms-3 me-4"></i>My Account</li>
+        <li routerLink="orders" class="h6 px-3 py-3 d-flex align-items-center border-bottom border-2 list-item"><i
+            class="fas fa-truck fa-2x text-primary ms-3 me-4"></i>My Orders</li>
+        <li routerLink="" class="h6 px-3 py-3 d-flex align-items-center border-bottom border-2 list-item"><i
+            class="fas fa-sign-out-alt fa-2x text-primary ms-3 me-4"></i>Logout</li>
+      </ul>
     </div>
   </aside>
-  <router-outlet class="col-12 col-sm-6 col-md-9"></router-outlet>
+  <div class="col-12 col-md-9">
+    <router-outlet></router-outlet>
+  </div>
 </section>
