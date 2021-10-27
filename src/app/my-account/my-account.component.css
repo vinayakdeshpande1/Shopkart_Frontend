@@ -1,4 +1,5 @@
 .list-item:hover {
     color: var(--bs-primary);
     background-color: #fcfcfc;
+    cursor: pointer;
 }
