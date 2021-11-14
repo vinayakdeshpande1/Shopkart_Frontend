@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+// import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-login',
@@ -13,9 +14,25 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  login() {
-    alert("Logged in successfully")
-    this.router.navigate(["/"])
+  async login() {
+    await fetch("http://localhost:3300/login", {
+      method: "post",
+      headers: {
+        'content-Type': "application/json"
+      },
+      body: JSON.stringify({
+        "email": "vin@vin.com",
+        "password": "1234",
+      })
+    })
+      .then((respone) => respone.json())
+      .then(((data) => {
+          localStorage.setItem("token", data["token"])
+          localStorage.setItem("user", data["fullname"])
+          this.router.navigate(["/"])
+      }))
+
+    // this.router.navigate(["/"])
   }
 
 }
