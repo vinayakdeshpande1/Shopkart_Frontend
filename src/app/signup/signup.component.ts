@@ -1,7 +1,6 @@
-import { Route } from '@angular/compiler/src/core';
 import { Component, OnInit } from '@angular/core';
-import { FormGroup,FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ApiService } from '../service/api.service';
 
 @Component({
   selector: 'app-signup',
@@ -10,25 +9,53 @@ import { Router } from '@angular/router';
 })
 export class SignupComponent implements OnInit {
 
-  signUp = new FormGroup({
-    fname:new FormControl(''),
-    lname:new FormControl(''),
-    email:new FormControl(''),
-    password:new FormControl('')
-  })
-  constructor(private router:Router) { 
-
-  }
+  constructor(private router: Router, private api: ApiService) { }
   ngOnInit(): void {
   }
-  collectInfo()
-  {
-    console.warn(this.signUp.value)
-  }
+
+  fullname: string = ''
+  email: string = ''
+  phone: string = ''
+  password: string = ''
+  confirmPassword: string = ''
 
   register() {
-    alert("Registration Successfull!!")
-    this.router.navigate(["/login"]);
+    if (this.password === this.confirmPassword) {
+      fetch("http://localhost:3300/register", {
+        method: "post",
+        headers: {
+          'content-Type': "application/json"
+        },
+        body: JSON.stringify({
+          fullname: this.fullname,
+          phone: this.phone,
+          email: this.email,
+          password: this.password,
+        })
+      })
+        .then((response => response.json()))
+        .then(async (data) => {
+          await fetch("http://localhost:3300/login", {
+            method: "post",
+            headers: {
+              'content-Type': "application/json"
+            },
+            body: JSON.stringify({
+              email: this.email,
+              password: this.password,
+            })
+          })
+            .then((respone) => respone.json())
+            .then(((data) => {
+              localStorage.setItem("token", data["token"])
+              localStorage.setItem("user", data["fullname"])
+              this.api.updateUser(data["fullname"])
+              this.router.navigate(["/"])
+            }))
+        })
+    } else {
+      alert("Make sure Password and Confirm Password Fields match!")
+    }
   }
 
 }
