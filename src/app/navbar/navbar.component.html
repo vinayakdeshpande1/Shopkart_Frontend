@@ -16,7 +16,7 @@
       <ul class="navbar-nav right-content align-items-center">
         <li *ngIf="user == ''" class="nav-item mx-1 fw-bold btn btn-light text-primary" routerLink="/login">Login</li>
         <li *ngIf="user == ''" class="nav-item mx-1 fw-bold btn btn-light text-primary" routerLink="/signup">SignUp</li>
-        <li *ngIf="user !== ''" class="nav-item mx-1 fw-bold text-light">Welcome,
+        <li *ngIf="user !== ''" class="nav-item mx-1 fw-bold text-light" routerLink="/me">Welcome,
           {{user}}</li>
         <li class="nav-item mx-2 ms-5">
           <a routerLink="/cart" class="text-light text-decoration-none">

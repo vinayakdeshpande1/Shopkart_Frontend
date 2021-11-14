@@ -17,9 +17,7 @@ export class NavbarComponent implements OnInit {
   }
 
   logout() {
-    this.api.updateUser("")
-    localStorage.removeItem("token")
-    localStorage.removeItem("user")
+    this.api.logout()
   }
 
 }

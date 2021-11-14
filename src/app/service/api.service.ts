@@ -14,5 +14,11 @@ export class ApiService {
   updateUser(fullname:string) {
     this.user.next(fullname)
   }
+
+  logout() {
+    this.updateUser("")
+    localStorage.removeItem("token")
+    localStorage.removeItem("user")
+  }
   
 }
