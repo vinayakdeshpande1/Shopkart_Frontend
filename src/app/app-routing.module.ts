@@ -52,6 +52,10 @@ const routes: Routes = [
         component: MyordersComponent,
       },
     ]
+  },
+  {
+    path: "**",
+    redirectTo: "/"
   }
 ];
 
