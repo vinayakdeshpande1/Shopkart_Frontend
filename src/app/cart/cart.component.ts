@@ -12,9 +12,27 @@ export class CartComponent implements OnInit {
   constructor(private auth: ApiService) { }
 
   ngOnInit(): void {
+    this.getCartItems()
+    console.log(this.isLoggedIn)
   }
 
   isLoggedIn = this.auth.isLoggedIn
+
+  async getCartItems() {
+    await fetch("http://localhost:3300/cart", {
+      method: "post",
+      headers: {
+        'content-Type': "application/json"
+      },
+      body: JSON.stringify({
+        token: this.auth.token,
+      })
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data)
+      })
+  }
 
   cart = [
     {
@@ -23,7 +41,7 @@ export class CartComponent implements OnInit {
       price: 500,
       quantity: 3
     },
-    
+
     {
       id: 2,
       name: "Product 2",
@@ -44,7 +62,7 @@ export class CartComponent implements OnInit {
     },
   ]
 
-  decreaseItemCount(item:any) {
+  decreaseItemCount(item: any) {
     if (item.quantity <= 1) {
       alert("Item quantity cannot be less than 1")
     } else {
@@ -52,7 +70,7 @@ export class CartComponent implements OnInit {
     }
   }
 
-  increaseItemCount(item:any) {
+  increaseItemCount(item: any) {
     if (item.quantity >= 20) {
       alert("Item quantity cannot be greater than 20")
     } else {
@@ -60,8 +78,8 @@ export class CartComponent implements OnInit {
     }
   }
 
-  removeFromCart(item:any) {
-    this.cart.forEach((product:any) => {
+  removeFromCart(item: any) {
+    this.cart.forEach((product: any) => {
       if (product.id == item.id) {
         this.cart.splice(this.cart.indexOf(item), 1);
       }
@@ -69,8 +87,8 @@ export class CartComponent implements OnInit {
   }
 
   orderTotal() {
-    let total:number = 0;
-    this.cart.map((item)=> {
+    let total: number = 0;
+    this.cart.map((item) => {
       total += (item.price * item.quantity);
     })
 
