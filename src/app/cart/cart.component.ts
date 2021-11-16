@@ -1,4 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
+import { ApiService } from '../auth-service/api.service';
 
 @Component({
   selector: 'app-cart',
@@ -7,10 +9,12 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class CartComponent implements OnInit {
 
-  constructor() { }
+  constructor(private auth: ApiService) { }
 
   ngOnInit(): void {
   }
+
+  isLoggedIn = this.auth.isLoggedIn
 
   cart = [
     {
@@ -39,8 +43,6 @@ export class CartComponent implements OnInit {
       quantity: 1
     },
   ]
-
-  isLoggedIn = true;
 
   decreaseItemCount(item:any) {
     if (item.quantity <= 1) {
