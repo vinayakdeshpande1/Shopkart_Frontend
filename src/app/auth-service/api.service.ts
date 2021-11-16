@@ -9,6 +9,7 @@ export class ApiService {
   user = new BehaviorSubject(localStorage.getItem("user") || "")
   currentUser = this.user.asObservable()
   isLoggedIn = false
+  token = localStorage.getItem("token") || null
 
   constructor() { }
 
