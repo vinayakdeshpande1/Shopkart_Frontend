@@ -23,7 +23,7 @@ export class NavbarComponent implements OnInit {
   }
 
   redirectToSearch() {
-    this.router.navigate([`/search/${this.searchTerm}`])
+    this.router.navigateByUrl(`/search/${this.searchTerm}`)
   }
 
 }

@@ -10,14 +10,13 @@
     </button>
     <div class="collapse navbar-collapse text-white fs-5" id="navbarSupportedContent">
       <form class="search-form d-flex flex-grow-1">
-        <input class="w-lg-100 form-control me-2 searchbox" type="search" placeholder="Search" aria-label="Search" name="searchTerm" [(ngModel)]="searchTerm">
+        <input (keyup.enter)="redirectToSearch()" class="w-lg-100 form-control me-2 searchbox" type="search" placeholder="Search" aria-label="Search" name="searchTerm" [(ngModel)]="searchTerm">
         <span (click)="redirectToSearch()"><i class="text-primary fas fa-search fs-4"></i></span>
       </form>
       <ul class="navbar-nav right-content align-items-center">
         <li *ngIf="user == ''" class="nav-item mx-1 fw-bold btn btn-light text-primary" routerLink="/login">Login</li>
         <li *ngIf="user == ''" class="nav-item mx-1 fw-bold btn btn-light text-primary" routerLink="/signup">SignUp</li>
-        <li *ngIf="user !== ''" class="nav-item mx-1 fw-bold text-light" routerLink="/me">Welcome,
-          {{user}}</li>
+        <li *ngIf="user !== ''" class="nav-item mx-1 fw-bold text-light welcomeUser" routerLink="/me">Welcome, {{user}}</li>
         <li class="nav-item mx-2 ms-5">
           <a routerLink="/cart" class="text-light text-decoration-none">
             <i class="fas fa-cart-plus fs-4"></i>

@@ -30,6 +30,10 @@ i.fa-cart-plus {
     right: 0.4rem;
 }
 
+.welcomeUser {
+  cursor: pointer;
+}
+
 /* breakpoint --lg */
 @media screen and (max-width: 992px) {
   .w-lg-100 {
