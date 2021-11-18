@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, SimpleChange, SimpleChanges } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from '../auth-service/api.service';
 
@@ -9,23 +9,25 @@ import { ApiService } from '../auth-service/api.service';
 })
 export class SearchPageComponent implements OnInit {
 
-  constructor(private router: ActivatedRoute, private auth: ApiService) { }
+  constructor(private router: ActivatedRoute, private auth: ApiService) {
+    router.params.subscribe(val => {
+      this.searchTerm = this.router.snapshot.paramMap.get("searchTerm")
+      this.searchProduct(this.searchTerm)
+      this.time = Math.random().toFixed(2)
+    })
+  }
 
-  searchTerm:any = ''
-  products:any;
-  numberOfProducts:Number = 0
-  time:String = '0'
+  @Input() searchTerm: any = ''
+  products: any;
+  numberOfProducts: Number = 0
+  time: String = '0'
   isLoggedIn = this.auth.isLoggedIn
 
   ngOnInit(): void {
-    this.searchTerm = this.router.snapshot.paramMap.get("searchTerm")
-    this.searchProduct()
-    this.time = Math.random().toFixed(2)
   }
 
-  searchProduct() {
-    // console.log(this.searchTerm)
-    fetch(`http://localhost:3300/search/${this.searchTerm}`)
+  searchProduct(searchTerm: any) {
+    fetch(`http://localhost:3300/search/${searchTerm}`)
       .then((response) => response.json())
       .then((data) => {
         console.log(data)
