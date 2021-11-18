@@ -13,7 +13,6 @@ export class CartComponent implements OnInit {
 
   ngOnInit(): void {
     this.getCartItems()
-    console.log(this.isLoggedIn)
   }
 
   isLoggedIn = this.auth.isLoggedIn
@@ -30,7 +29,7 @@ export class CartComponent implements OnInit {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log(data)
+        console.log(data);
       })
   }
 

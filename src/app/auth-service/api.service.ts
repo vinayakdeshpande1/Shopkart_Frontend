@@ -18,6 +18,7 @@ export class ApiService {
     if (localStorage.getItem("token")) {
       this.isLoggedIn = true
     }
+    this.token = localStorage.getItem("token") || null
   }
 
   logout() {
@@ -27,6 +28,7 @@ export class ApiService {
     if (!localStorage.getItem("token")) {
       this.isLoggedIn = false
     }
+    this.token = null
   }
 
 }

@@ -17,6 +17,7 @@ import { FormsModule } from '@angular/forms';
 import { MyAccountComponent } from './my-account/my-account.component';
 import { MyordersComponent } from './my-account/myorders/myorders.component';
 import { DetailsComponent } from './my-account/details/details.component';
+import { SearchPageComponent } from './search-page/search-page.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { DetailsComponent } from './my-account/details/details.component';
     MyAccountComponent,
     MyordersComponent,
     DetailsComponent,
+    SearchPageComponent,
   ],
   imports: [
     BrowserModule,

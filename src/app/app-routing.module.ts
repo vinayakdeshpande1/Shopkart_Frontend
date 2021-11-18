@@ -9,6 +9,7 @@ import { ViewComponent } from './view/view.component';
 import { MyAccountComponent } from './my-account/my-account.component';
 import { MyordersComponent } from './my-account/myorders/myorders.component';
 import { DetailsComponent } from './my-account/details/details.component';
+import { SearchPageComponent } from './search-page/search-page.component';
 
 const routes: Routes = [
   {
@@ -52,6 +53,10 @@ const routes: Routes = [
         component: MyordersComponent,
       },
     ]
+  },
+  {
+    path: "search/:searchTerm",
+    component: SearchPageComponent,
   },
   {
     path: "**",
