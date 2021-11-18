@@ -1,0 +1,15 @@
+<div class="container p-2 my-3">
+    <h3 class="d-block mb-0">Search results for: <em>'{{ searchTerm }}'</em></h3>
+    <small class="text-muted">{{ numberOfProducts }} results in {{ time }}s</small>
+    <div class="mt-3 mb-5 d-flex flex-wrap justify-content-center">
+        <div routerLink="/view" class="single-product card px-3 py-1 mx-2 my-1 col-12 col-sm-6 col-md-4 col-lg-3" style="width: 18rem;" *ngFor="let product of products">
+            <div class="card-body">
+              <img src="https://rukminim1.flixcart.com/image/543/652/jur9nrk0/shoe/k/b/a/wonder-1313-7-asian-grey-orange-original-imaffbmzjc5hmagy.jpeg?q=50" class="card-img-top" alt="">
+              <h5 class="card-title mt-2">{{ product.name }}</h5>
+              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet, necessitatibus.</p>
+              <a routerLink="/view" class="btn btn-outline-primary mx-1">View</a>
+              <a routerLink="/cart" class="btn btn-primary mx-1">Add to Cart</a>
+            </div>
+          </div>
+    </div>
+</div>
