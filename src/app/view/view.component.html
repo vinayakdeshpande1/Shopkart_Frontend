@@ -1,15 +1,15 @@
 <div class="container p-2 my-3">
-    <h2>Product Name</h2>
+    <h2>{{ product.name || "Product Name" }}</h2>
     <img src="https://rukminim1.flixcart.com/image/543/652/jur9nrk0/shoe/k/b/a/wonder-1313-7-asian-grey-orange-original-imaffbmzjc5hmagy.jpeg?q=50" class="card-img-top" alt="">
-    <h3>Discription</h3>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque mollitia laborum consequuntur alias inventore quo asperiores in enim accusamus et numquam voluptates molestias, maiores fuga itaque distinctio modi, libero quis quia! Natus nostrum incidunt quam ut aperiam quibusdam ad veniam.</p>
+    <h3>Description</h3>
+    <p>{{ product.description || "Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque mollitia laborum consequuntur alias inventore quo asperiores in enim accusamus et numquam voluptates molestias, maiores fuga itaque distinctio modi, libero quis quia! Natus nostrum incidunt quam ut aperiam quibusdam ad veniam." }}</p>
     <h2>Rating</h2>
     <span class = "fa fa-star checked"></span>
     <span class = "fa fa-star checked"></span>
     <span class = "fa fa-star checked"></span>
     <span class = "fa fa-star checked"></span>
     <span class = "fa fa-star unchecked"></span>
-    <button class="btn btn-primary ms-5" routerLink="/cart">Add to Cart</button>
+    <button class="btn btn-primary ms-5" (click)="addToCart(product._id)">Add to Cart</button>
 </div>
 <style>
     .checked {
