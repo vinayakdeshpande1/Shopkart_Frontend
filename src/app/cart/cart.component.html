@@ -1,7 +1,10 @@
 <div class="container p-3 my-4 shadow-lg mx-auto text-center align-middle h-100">
-  <h4 class="d-flex mb-5">My Cart</h4>
+  <h4 class="d-flex justify-content-between mb-5">
+    <span>My Cart</span>
+    <span routerLink="/me/orders" class="btn btn-outline-primary">My Orders</span>
+  </h4>
 
-  <div *ngIf="cart.length < 1 || !isLoggedIn; else elseBlock">
+  <div *ngIf="cartLength < 1 || !isLoggedIn; else elseBlock">
     <img class="cart-empty-img"
       src="https://rukminim1.flixcart.com/www/800/800/promos/16/05/2019/d438a32e-765a-4d8b-b4a6-520b560971e8.png?q=90"
       alt="">
@@ -24,17 +27,22 @@
         src="https://rukminim1.flixcart.com/www/800/800/promos/16/05/2019/d438a32e-765a-4d8b-b4a6-520b560971e8.png?q=90"
         alt="">
       <div class="cart-product text-start">
-        <h4>{{ item.name }}</h4>
-        <strong class="d-block my-3">Rs. {{ item.price }}</strong>
+        <h4>{{ item.product.name }}</h4>
+        <p class="d-block my-3">
+          <span class="fw-bold">Rs. {{ item.product.price }}/-</span>
+          <span class="mx-2 text-muted text-decoration-line-through fw-normal">Rs. {{ item.product.originalPrice }}/-</span></p>
         <button class="btn btn-secondary" (click)="decreaseItemCount(item)">-</button>
         <button class="btn btn-muted item-quantity">{{ item.quantity }}</button>
         <button class="btn btn-secondary" (click)="increaseItemCount(item)">+</button>
-        <button class="ms-3 btn btn-outline-secondary" (click)="removeFromCart(item)">Remove</button>
+        <button class="ms-3 btn btn-outline-secondary" (click)="removeFromCart(item.product._id)">Remove</button>
       </div>
     </template>
-    <div class="d-flex flex-column flex-sm-row justify-content-between align-items-center">
-      <span class="d-flex fw-bold">Order Total: <span class="ms-2 text-danger">Rs. {{ orderTotal() }}/-</span></span>
-      <button class="btn btn-danger my-3 py-2 px-5" data-bs-toggle="modal" data-bs-target="#successModal">Place Order</button>
+    <div class="d-flex flex-column flex-sm-row justify-content-between align-items-center mt-3">
+      <div class="d-flex flex-column align-items-start fw-bold">
+        <p class="ms-2 mb-0 text-danger">Order Total: <span class="ms-2" style="color: #222;">Rs. {{ orderTotal().total }}/-</span><span class="ms-2 text-decoration-line-through text-muted fw-normal" style="color: #222;">Rs. {{ orderTotal().originalTotal }}/-</span></p>
+        <p class="small ms-2 text-muted">You save Rs. {{ orderTotal().originalTotal - orderTotal().total }}/-</p>
+      </div>
+      <button class="btn btn-danger my-3 py-2 px-5" (click)="placeOrder()" data-bs-toggle="modal" data-bs-target="#successModal">Place Order</button>
     </div>
   </ng-template>
 </div>

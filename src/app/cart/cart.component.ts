@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { ApiService } from '../auth-service/api.service';
+import { CartService } from '../services/cart-service/cart.service';
 
 @Component({
   selector: 'app-cart',
@@ -9,92 +10,101 @@ import { ApiService } from '../auth-service/api.service';
 })
 export class CartComponent implements OnInit {
 
-  constructor(private auth: ApiService) { }
+  constructor(private auth: ApiService, private cartApi: CartService) {
+    this.getCartDetails()
+  }
 
-  ngOnInit(): void {
-    this.getCartItems()
+  cart: any;
+  cartLength: Number = 0
+  async ngOnInit(): Promise<void> {
   }
 
   isLoggedIn = this.auth.isLoggedIn
 
-  async getCartItems() {
-    await fetch("http://localhost:3300/cart", {
+  async getCartDetails() {
+    this.cart = (await this.cartApi.getCartDetails()).cartDetails
+    this.cartLength = this.cart.length
+
+    console.log(this.cart);
+    
+  }
+
+  decreaseItemCount(item: any) {
+    if (item.quantity > 1) {
+      fetch(`http://localhost:3300/cart/increase/-1/${item.product._id}`, {
+        method: "post",
+        headers: {
+          'content-Type': "application/json"
+        },
+        body: JSON.stringify({
+          token: this.auth.token
+        })
+      }).then((res) => res.json())
+        .then(data => {
+          console.log(data)
+          item.quantity--
+        })
+    } else {
+      this.removeFromCart(item.product._id)
+    }
+  }
+
+  increaseItemCount(item: any) {
+    fetch(`http://localhost:3300/cart/increase/1/${item.product._id}`, {
       method: "post",
       headers: {
         'content-Type': "application/json"
       },
       body: JSON.stringify({
-        token: this.auth.token,
+        token: this.auth.token
       })
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
+    }).then((res) => res.json())
+      .then(data => {
+        console.log(data)
+        item.quantity++
       })
   }
 
-  cart = [
-    {
-      id: 1,
-      name: "Product 1",
-      price: 500,
-      quantity: 3
-    },
-
-    {
-      id: 2,
-      name: "Product 2",
-      price: 700,
-      quantity: 4
-    },
-    {
-      id: 3,
-      name: "Product 3",
-      price: 199,
-      quantity: 1
-    },
-    {
-      id: 4,
-      name: "Product 4",
-      price: 599,
-      quantity: 1
-    },
-  ]
-
-  decreaseItemCount(item: any) {
-    if (item.quantity <= 1) {
-      alert("Item quantity cannot be less than 1")
-    } else {
-      item.quantity--;
-    }
-  }
-
-  increaseItemCount(item: any) {
-    if (item.quantity >= 20) {
-      alert("Item quantity cannot be greater than 20")
-    } else {
-      item.quantity++;
-    }
-  }
-
-  removeFromCart(item: any) {
-    this.cart.forEach((product: any) => {
-      if (product.id == item.id) {
-        this.cart.splice(this.cart.indexOf(item), 1);
-      }
-    });
+  async removeFromCart(productId: any) {
+    await fetch(`http://localhost:3300/cart/remove/${productId}`, {
+      method: "post",
+      headers: {
+        'content-Type': "application/json"
+      },
+      body: JSON.stringify({
+        token: this.auth.token
+      })
+    }).then((res) => res.json())
+      .then(() => {
+        let cartLength = this.cart.length
+        while (cartLength--) {
+          if (this.cart[cartLength]["product"]["_id"] === productId) {
+            this.cart.splice(cartLength, 1)
+            this.cartLength = this.cart.length
+            break
+          }
+        }
+      })
   }
 
   orderTotal() {
+    // console.log(this.cart)
     let total: number = 0;
-    this.cart.map((item) => {
-      total += (item.price * item.quantity);
+    let originalTotal: number = 0;
+    this.cart.map((item: any) => {
+      // console.log("Item: ", item)
+      total += (item.product.price * item.quantity);
+      originalTotal += (item.product.originalPrice * item.quantity);
     })
 
-    return total;
+    return  {
+      total,
+      originalTotal
+    }
   }
 
   placeOrder() {
+    this.cartApi.placeOrder()
     alert("Your order has been placed successfully!")
   }
 
