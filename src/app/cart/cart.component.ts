@@ -60,7 +60,7 @@ export class CartComponent implements OnInit {
       })
     }).then((res) => res.json())
       .then(data => {
-        console.log(data)
+        // console.log(data)
         item.quantity++
       })
   }
