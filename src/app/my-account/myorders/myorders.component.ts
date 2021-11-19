@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CartService } from 'src/app/services/cart-service/cart.service';
 
 @Component({
   selector: 'app-myorders',
@@ -7,11 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MyordersComponent implements OnInit {
 
-  constructor() { }
+  constructor(private cartApi: CartService) {
+    this.getMyOrders()
+   }
 
   ngOnInit(): void {
   }
 
-  orders = [1, 1, 2, 3, 4]
+  orders:any;
+
+  async getMyOrders() {
+    this.orders = (await this.cartApi.myOrders()).orderDetails
+    console.log(this.orders);
+  }
 
 }

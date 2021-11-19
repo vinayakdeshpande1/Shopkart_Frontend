@@ -1,10 +1,10 @@
 <section class="bg-white border border-1 rounded">
-    <div class="border border-1 p-2 m-2 d-flex" *ngFor="let i of orders">
+    <div class="border border-1 p-2 m-2 d-flex" *ngFor="let product of orders">
             <img class="me-4" src="https://rukminim1.flixcart.com/image/224/224/kf75fgw0/kitchen-rack/u/8/g/ss-cup-stand-01-flipkart-smartbuy-original-imafvphu2vfbwfym.jpeg?q=90" alt="" height="150px">
             <div class="mt-3">
-                <h5 class="card-title">Product {{ i }}</h5>
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Error sed ducimus, mollitia ad velit et nemo veritatis ab quo corporis non beatae voluptatibus, reiciendis obcaecati consectetur repellat earum vitae saepe?</p>
-                <span class="price">Rs. 499</span>
+                <h5 class="card-title">{{ product.product.name }}</h5>
+                <p class="ellipsis">{{ product.product.description || "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia laborum, asperiores vel au totam non eum distinctio et. Eos dolores voluptatum amet ut ullam iusto blanditiis accusantium voluptatibus." + "..." }}</p>
+                <span class="price">Total Payable: <span class="text-danger">Rs. {{product.product.price * product.quantity}}/-</span></span>
             </div>
         </div>
 </section>
