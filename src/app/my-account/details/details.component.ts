@@ -9,18 +9,20 @@ import { ApiService } from 'src/app/auth-service/api.service';
 export class DetailsComponent implements OnInit {
 
   constructor(private auth: ApiService) {
-    this.getUserDetails()
+    this.getUserDetails()    
+
   }
 
   ngOnInit(): void {
+    this.getUserDetails()
   }
 
   fullname: string = ''
   firstName: string = this.fullname.split(" ")[0] || ""
   lastName: string = this.fullname.split(" ")[1] || ""
-  male: boolean = false
-  female: boolean = false
-  gender: string = this.male ? "male" : "female"
+  gender: string = ''
+  male: boolean = this.gender == "male"
+  female: boolean =  this.gender == "female"
   email: string = ''
   phone: string = ''
 
@@ -37,15 +39,14 @@ export class DetailsComponent implements OnInit {
       })
         .then((response => response.json()))
         .then(data => {
-          console.log(data);
-
           this.fullname = data.result.fullname
           this.firstName = this.fullname.split(" ")[0] || ""
           this.lastName = this.fullname.split(" ")[1] || ""
           this.email = data.result.email
           this.phone = data.result.phone
-          this.male = data.result.gender == "male"
-          this.female = data.result.gender == "female"
+          this.gender = data.result.gender
+          this.male = this.gender == "male"
+          this.female = this.gender == "female"
         })
     } else {
       alert("Something Went Wrong!")
@@ -53,8 +54,6 @@ export class DetailsComponent implements OnInit {
   }
 
   async updateUserInfo() {
-    this.gender = this.male ? "male" : this.female ? "female" : ""
-
     if (this.auth.isLoggedIn) {
       await fetch("http://localhost:3300/user/update", {
         method: "post",
@@ -63,19 +62,29 @@ export class DetailsComponent implements OnInit {
         },
         body: JSON.stringify({
           token: this.auth.token,
-          fullname: this.firstName + " " + this.lastName, 
-          email: this.email, 
-          gender: this.gender, 
+          fullname: this.firstName + " " + this.lastName,
+          email: this.email,
+          gender: this.gender,
           phone: this.phone
         })
       })
         .then((response => response.json()))
-        .then(data => {
-          console.log(data);
+        .then(() => {
+          this.getUserDetails()
+          alert("Information saved succefully!")
         })
     } else {
       alert("Something Went Wrong!")
     }
   }
+
+
+  // Show/Hide Toast
+  // funWithToast() {
+  //   let toastElList = [].slice.call(document.querySelectorAll('.toast'))
+  //   let toastList = toastElList.map(function (toastEl) {
+  //     return new bootstrap.Toast(toastEl, option)
+  //   })
+  // }
 
 }
