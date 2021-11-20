@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiService } from 'src/app/auth-service/api.service';
 
 @Component({
   selector: 'app-details',
@@ -7,9 +8,74 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DetailsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private auth: ApiService) {
+    this.getUserDetails()
+  }
 
   ngOnInit(): void {
+  }
+
+  fullname: string = ''
+  firstName: string = this.fullname.split(" ")[0] || ""
+  lastName: string = this.fullname.split(" ")[1] || ""
+  male: boolean = false
+  female: boolean = false
+  gender: string = this.male ? "male" : "female"
+  email: string = ''
+  phone: string = ''
+
+  async getUserDetails() {
+    if (this.auth.isLoggedIn) {
+      await fetch("http://localhost:3300/user", {
+        method: "post",
+        headers: {
+          'content-Type': "application/json"
+        },
+        body: JSON.stringify({
+          token: this.auth.token
+        })
+      })
+        .then((response => response.json()))
+        .then(data => {
+          console.log(data);
+
+          this.fullname = data.result.fullname
+          this.firstName = this.fullname.split(" ")[0] || ""
+          this.lastName = this.fullname.split(" ")[1] || ""
+          this.email = data.result.email
+          this.phone = data.result.phone
+          this.male = data.result.gender == "male"
+          this.female = data.result.gender == "female"
+        })
+    } else {
+      alert("Something Went Wrong!")
+    }
+  }
+
+  async updateUserInfo() {
+    this.gender = this.male ? "male" : this.female ? "female" : ""
+
+    if (this.auth.isLoggedIn) {
+      await fetch("http://localhost:3300/user/update", {
+        method: "post",
+        headers: {
+          'content-Type': "application/json"
+        },
+        body: JSON.stringify({
+          token: this.auth.token,
+          fullname: this.firstName + " " + this.lastName, 
+          email: this.email, 
+          gender: this.gender, 
+          phone: this.phone
+        })
+      })
+        .then((response => response.json()))
+        .then(data => {
+          console.log(data);
+        })
+    } else {
+      alert("Something Went Wrong!")
+    }
   }
 
 }

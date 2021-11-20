@@ -1,28 +1,28 @@
 <section class="card p-3 flex-grow-1 h-100">
   <div class="input-goup">
     <h6 class="mb-3">Personal Information</h6>
-    <input type="text" aria-label="First name" class="form-control-inline mx-1 px-2 py-3" value="Abhijeet">
-    <input type="text" aria-label="Last name" class="form-control-inline mx-1 px-2 py-3" value="Dhanwate">
+    <input type="text" aria-label="First name" class="form-control-inline mx-1 px-2 py-3" (ngModel)="firstName" [value]="firstName">
+    <input type="text" aria-label="Last name" class="form-control-inline mx-1 px-2 py-3" (ngModel)="lastName" [value]="lastName">
   </div>
   
   <div class="input-goup mt-3">
     <h6 class="mb-3">Gender</h6>
-    <input type="radio" name="gender" id="gender-male" class="form-check-input mx-1" checked>
+    <input type="radio" name="gender" id="gender-male" class="form-check-input mx-1" [(ngModel)]="male" [checked]="male" value="male">
     <label for="gender-male" class="form-check-label me-2">Male</label>
-    <input type="radio" name="gender" id="gender-female" class="form-check-input mx-1">
+    <input type="radio" name="gender" id="gender-female" class="form-check-input mx-1" [(ngModel)]="female" [checked]="female" value="female">
     <label for="gender-female" class="form-check-label me-2">Female</label>
   </div>
 
   <div class="input-roup mt-3">
       <label for="email" class="h6 d-block mb-3">Email</label>
-      <input class="form-control-input px-2 py-3" type="email" name="email" id="email" value="abhi@shopkart.com">
+      <input class="form-control-input px-2 py-3" type="email" name="email" id="email" [(ngModel)]="email" value="abhi@shopkart.com">
   </div>
 
   <div class="input-roup mt-3">
     <label for="phone" class="h6 d-block mb-3">Mobile Number</label>
-    <input class="form-control-input px-2 py-3" type="email" name="phone" id="phone" value="+91 98765 43210">
+    <input class="form-control-input px-2 py-3" type="email" name="phone" id="phone" [(ngModel)]="phone" value="+91 98765 43210">
 </div>
 
-<button type="submit" class="btn btn-primary mt-5 w-25 py-3">Save</button>
+<button type="submit" class="btn btn-primary mt-5 w-25 py-3" (click)="updateUserInfo()">Save</button>
 
 </section>
