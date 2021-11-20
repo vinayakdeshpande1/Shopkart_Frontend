@@ -17,11 +17,9 @@
   <div class="d-flex align-items-center">
     <div class="me-3">
       <h2>Rating</h2>
-      <span class="fa fa-star checked"></span>
-      <span class="fa fa-star checked"></span>
-      <span class="fa fa-star checked"></span>
-      <span class="fa fa-star checked"></span>
-      <span class="fa fa-star unchecked"></span>
+      <span *ngFor="let i of rating">
+        <span class="fa fa-star" [class]="i== 0 ? 'checked' : 'unchecked' "></span>
+      </span>
     </div>
     <button class="btn btn-primary ms-5" (click)="addToCart(product._id)">Add to Cart</button>
   </div>

@@ -11,31 +11,42 @@ import { ProductService } from '../services/product.service';
 export class ViewComponent implements OnInit {
 
   productId: string = this.router.snapshot.paramMap.get("productId") || "";
+  rating:number[] = []
 
   constructor(
-    private cart: CartService, 
-    private productService: ProductService, 
+    private cart: CartService,
+    private productService: ProductService,
     private router: ActivatedRoute,
     private route: Router) {
-    this.fetchProduct(this.productId)
-    }
+      this.fetchProduct(this.productId)
+      
+      for (let i=0; i<5; i++) {
+        if (Math.random() > 0.35) {
+          this.rating.push(0)
+        } else {
+          this.rating.push(1)
+        }
+      }
+
+      this.rating = this.rating.sort()
+  }
 
   ngOnInit(): void {
   }
 
-  addToCart(productID:string) {    
+  addToCart(productID: string) {
     this.cart.addToCart(productID);
     alert("Product has been added to Cart")
     this.route.navigateByUrl("/cart")
   }
 
-  product:any = {
+  product: any = {
     name: '',
     description: '',
 
   };
   async fetchProduct(productId: string) {
-    this.product =  await this.productService.fetchProduct(productId)
+    this.product = await this.productService.fetchProduct(productId)
     return await this.product
   }
 
