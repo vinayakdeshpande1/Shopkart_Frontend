@@ -81,6 +81,7 @@ export class CartComponent implements OnInit {
           if (this.cart[cartLength]["product"]["_id"] === productId) {
             this.cart.splice(cartLength, 1)
             this.cartLength = this.cart.length
+            this.cartApi.updateCartLength(this.cartLength)
             break
           }
         }

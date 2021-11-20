@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { BehaviorSubject } from 'rxjs';
 import { ApiService } from '../auth-service/api.service';
+import { CartService } from '../services/cart-service/cart.service';
 
 @Component({
   selector: 'app-navbar',
@@ -9,13 +11,16 @@ import { ApiService } from '../auth-service/api.service';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor(private api: ApiService, private router: Router) { }
+  constructor(private api: ApiService, private router: Router, private cartApi: CartService) { }
 
   user: string = ""
   searchTerm = ""
+  thisCartLength:number = 0
+  
 
   ngOnInit(): void {
     this.api.currentUser.subscribe(user => this.user = user)
+    this.cartApi.currentCartLength.subscribe((cartLength) => this.thisCartLength = cartLength)
   }
 
   logout() {

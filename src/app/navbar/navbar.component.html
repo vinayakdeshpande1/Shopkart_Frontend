@@ -20,7 +20,7 @@
         <li class="nav-item mx-2 ms-5">
           <a routerLink="/cart" class="text-light text-decoration-none">
             <i class="fas fa-cart-plus fs-4"></i>
-            <span class="cart-badge badge bg-danger d-none d-sm-inline">5</span>
+            <span class="cart-badge badge bg-danger d-none d-sm-inline">{{ thisCartLength}}</span>
           </a>
         </li>
         <li *ngIf="user !== ''" class="nav-item mx-1 fw-bold btn btn-light text-primary ms-auto" routerLink="/"

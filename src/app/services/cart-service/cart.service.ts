@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 import { ApiService } from 'src/app/auth-service/api.service';
 import { ProductService } from '../product.service';
 
@@ -8,6 +9,14 @@ import { ProductService } from '../product.service';
 export class CartService {
 
   constructor(private auth: ApiService, private productService: ProductService) { }
+
+  cartLength = new BehaviorSubject(0)
+  currentCartLength = this.cartLength.asObservable()
+
+  updateCartLength(value:any) {
+    console.log(value);
+    this.cartLength.next(value)
+  }
 
   addToCart(productId: string) {
     fetch(`http://localhost:3300/cart/add/${productId}`, {
@@ -20,7 +29,7 @@ export class CartService {
       })
     }).then((response) => response.json())
       .then((data) => {
-        // console.log(data)
+        this.fetchCartItems()
       })
   }
 
@@ -35,6 +44,9 @@ export class CartService {
       })
     }).then(res => res.json())
       .then(data => {
+        
+        
+        this.updateCartLength(data.cart.length)
         return data.cart
       }) 
   }
@@ -65,6 +77,7 @@ export class CartService {
       })
     }
 
+    this.updateCartLength(cartDetails.length)
     return  {
       cartDetails,
       length: cartDetails.length
@@ -81,7 +94,10 @@ export class CartService {
         token: this.auth.token
       })
     }).then(res => res.json())
-      .then(data => data) 
+      .then(data => {
+        this.fetchCartItems()
+        return data
+      }) 
   }
 
   async myOrders() {
