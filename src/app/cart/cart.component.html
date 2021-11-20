@@ -1,7 +1,7 @@
 <div class="container p-3 my-4 shadow-lg mx-auto text-center align-middle h-100">
   <h4 class="d-flex justify-content-between mb-5">
     <span>My Cart</span>
-    <span routerLink="/me/orders" class="btn btn-outline-primary">My Orders</span>
+    <span routerLink="/me/orders" class="btn btn-primary">My Orders</span>
   </h4>
 
   <div *ngIf="cartLength < 1 || !isLoggedIn; else elseBlock">
@@ -23,9 +23,9 @@
     <template
       class="carts card p-2 my-2 d-flex justify-content-center align-items-center justify-content-sm-start flex-column flex-sm-row shadom-sm border-bottom"
       *ngFor="let item of cart">
-      <img style="height: 150px; width: fit-content;" class="me-5"
-        src="https://rukminim1.flixcart.com/www/800/800/promos/16/05/2019/d438a32e-765a-4d8b-b4a6-520b560971e8.png?q=90"
-        alt="">
+      <img style="height: 150px; width: fit-content;" class="ms-2 me-5"
+        src="{{ item.product.img || 'https://rukminim1.flixcart.com/www/800/800/promos/16/05/2019/d438a32e-765a-4d8b-b4a6-520b560971e8.png?q=90' }}"
+        alt="cart-image" style="width: 100px;">
       <div class="cart-product text-start">
         <h4>{{ item.product.name }}</h4>
         <p class="d-block my-3">

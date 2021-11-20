@@ -7,11 +7,11 @@
       <div class="card-body">
         <!-- src="{{ product.img  || 'https://rukminim1.flixcart.com/image/543/652/jur9nrk0/shoe/k/b/a/wonder-1313-7-asian-grey-orange-original-imaffbmzjc5hmagy.jpeg?q=50'}}" -->
         <img
-          src="https://rukminim1.flixcart.com/image/543/652/jur9nrk0/shoe/k/b/a/wonder-1313-7-asian-grey-orange-original-imaffbmzjc5hmagy.jpeg?q=50"
-          class="card-img-top" alt="">
-        <h5 class="card-title mt-2">{{ product.name }}</h5>
+          src="{{product.img || 'https://rukminim1.flixcart.com/image/543/652/jur9nrk0/shoe/k/b/a/wonder-1313-7-asian-grey-orange-original-imaffbmzjc5hmagy.jpeg?q=50'}}"
+          class="card-img-top" alt="" style="height: 300px">
+        <h5 class="card-title mt-4">{{ product.name }}</h5>
         <p class="card-text">
-          {{ product.description || 'Lorem ipsum dolor sit aunt blanditiis temporibus, eius voluptatibus natus quod ipsam...' }}
+          {{ (product.description.length>50)? (product.description | slice:0:40)+'...':(product.description) || 'Lorem ipsum dolor sit aunt blanditiis temporibus, eius voluptatibus natus quod ipsam...' }}
           <!-- {{ ((product.description.length>6)? (product.description | slice:0:6)+'..':(product.description)) || '' }}</p> -->
         </p>
         <a routerLink="{{ '/view/' + product._id }}" class="btn btn-outline-primary mx-1">View</a>

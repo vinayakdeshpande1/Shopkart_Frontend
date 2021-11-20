@@ -105,7 +105,6 @@ export class CartComponent implements OnInit {
 
   placeOrder() {
     this.cartApi.placeOrder()
-    alert("Your order has been placed successfully!")
   }
 
 }

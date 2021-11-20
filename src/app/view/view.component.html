@@ -1,29 +1,46 @@
 <div class="container p-2 my-3">
-    <h2>{{ product.name || "Product Name" }}</h2>
-    <img src="https://rukminim1.flixcart.com/image/543/652/jur9nrk0/shoe/k/b/a/wonder-1313-7-asian-grey-orange-original-imaffbmzjc5hmagy.jpeg?q=50" class="card-img-top" alt="">
-    <h3>Description</h3>
-    <p>{{ product.description || "Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque mollitia laborum consequuntur alias inventore quo asperiores in enim accusamus et numquam voluptates molestias, maiores fuga itaque distinctio modi, libero quis quia! Natus nostrum incidunt quam ut aperiam quibusdam ad veniam." }}</p>
-    <h2>Rating</h2>
-    <span class = "fa fa-star checked"></span>
-    <span class = "fa fa-star checked"></span>
-    <span class = "fa fa-star checked"></span>
-    <span class = "fa fa-star checked"></span>
-    <span class = "fa fa-star unchecked"></span>
+  <h2>{{ product.name || "Product Name" }}</h2>
+  <img
+    src="{{ product.img || 'https://rukminim1.flixcart.com/image/543/652/jur9nrk0/shoe/k/b/a/wonder-1313-7-asian-grey-orange-original-imaffbmzjc5hmagy.jpeg?q=50' }}"
+    class="card-img-top" alt="">
+  <div class="d-flex align-items-center justify-content-between">
+    <h3 class="me-3">Description</h3>
+    <p class="h4">
+        Price <span class="fw-bold mx-1">Rs.{{product.price}}/-</span>
+      <span class="mx-1 text-danger text-decoration-line-through">Rs.{{product.originalPrice || '999'}}/-</span>
+    </p>
+  </div>
+
+  <p>
+    {{ product.description || "Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque mollitia laborum consequuntur alias inventore quo asperiores in enim accusamus et numquam voluptates molestias, maiores fuga itaque distinctio modi, libero quis quia! Natus nostrum incidunt quam ut aperiam quibusdam ad veniam." }}
+  </p>
+  <div class="d-flex align-items-center">
+    <div class="me-3">
+      <h2>Rating</h2>
+      <span class="fa fa-star checked"></span>
+      <span class="fa fa-star checked"></span>
+      <span class="fa fa-star checked"></span>
+      <span class="fa fa-star checked"></span>
+      <span class="fa fa-star unchecked"></span>
+    </div>
     <button class="btn btn-primary ms-5" (click)="addToCart(product._id)">Add to Cart</button>
+  </div>
 </div>
 <style>
-    .checked {
-        color : goldenrod;
-        font-size : 20px;
-    }
-    .unchecked {
-        font-size : 20px;
-    }
- 
-    img {
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-        width: 30%;
-    }
+  .checked {
+    color: goldenrod;
+    font-size: 20px;
+  }
+
+  .unchecked {
+    font-size: 20px;
+  }
+
+  img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 30%;
+  }
+
 </style>

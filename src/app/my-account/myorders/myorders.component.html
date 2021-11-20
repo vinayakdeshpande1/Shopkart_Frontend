@@ -2,26 +2,27 @@
   <div *ngIf="ordersLength > 0; else elseBlock">
     <div class="border border-1 p-2 m-2 d-flex" *ngFor="let product of orders">
       <img class="me-4"
-        src="https://rukminim1.flixcart.com/image/224/224/kf75fgw0/kitchen-rack/u/8/g/ss-cup-stand-01-flipkart-smartbuy-original-imafvphu2vfbwfym.jpeg?q=90"
-        alt="" height="150px">
+        src="{{ product.product.img || 'https://rukminim1.flixcart.com/image/224/224/kf75fgw0/kitchen-rack/u/8/g/ss-cup-stand-01-flipkart-smartbuy-original-imafvphu2vfbwfym.jpeg?q=90' }}"
+        alt="" class="pt-4 mx-2 me-3" style="min-width: 150px; max-width: 150px;">
       <div class="mt-3">
         <h5 class="card-title">{{ product.product.name }}</h5>
         <p class="ellipsis">
-          {{ product.product.description || "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia laborum, asperiores vel au totam non eum distinctio et. Eos dolores voluptatum amet ut ullam iusto blanditiis accusantium voluptatibus." + "..." }}
+          {{ (product.product.description.length>80)? (product.product.description | slice:0:80)+'...':(product.product.description) }}
         </p>
-        <span class="price">Total Payable: <span class="text-danger">Rs.
-            {{product.product.price * product.quantity}}/-</span></span>
+        <span class="price">Total Payable: <span class="text-danger">
+          Rs.{{product.product.price * product.quantity}}/-</span></span>
       </div>
     </div>
   </div>
   <ng-template #elseBlock class="text-center d-flex justify-content-center">
     <div class="d-flex justify-content-center flex-column align-items-center p-5">
-        <img class="cart-empty-img"
-          src="https://rukminim1.flixcart.com/www/800/800/promos/16/05/2019/d438a32e-765a-4d8b-b4a6-520b560971e8.png?q=90"
-          alt="">
-        <p class="fs-5">No Orders Yet?</p>
-        <p>Shop now to add items to the cart</p>
-        <button class="btn btn-primary text-light rounded-0 py-2 px-5 d-block mx-auto my-2" routerLink="/">Order Now</button>
+      <img class="cart-empty-img"
+        src="https://rukminim1.flixcart.com/www/800/800/promos/16/05/2019/d438a32e-765a-4d8b-b4a6-520b560971e8.png?q=90"
+        alt="">
+      <p class="fs-5">No Orders Yet?</p>
+      <p>Shop now to add items to the cart</p>
+      <button class="btn btn-primary text-light rounded-0 py-2 px-5 d-block mx-auto my-2" routerLink="/">Order
+        Now</button>
     </div>
   </ng-template>
 </section>
