@@ -14,14 +14,32 @@
     background: #0d6efd;
 }
 
-.product>img:hover {
+.product>* {
+    transition: transform 300ms ease-in-out;
+    -webkit-transition: transform 300ms ease-in-out;
+    -moz-transition: transform 300ms ease-in-out;
+    -ms-transition: transform 300ms ease-in-out;
+    -o-transition: transform 300ms ease-in-out;
+}
+
+
+.product {
+    cursor: pointer;
+}
+
+.product:hover {
+    box-shadow: 0 0 0.4rem #888;
+    transform: rotate(-0.4deg);
+    -webkit-transform: rotate(-0.4deg);
+    -moz-transform: rotate(-0.4deg);
+    -ms-transform: rotate(-0.4deg);
+    -o-transform: rotate(-0.4deg);
+}
+
+.product:hover > img {
     transform: scale(1.03);
     -webkit-transform: scale(1.03);
     -moz-transform: scale(1.03);
     -ms-transform: scale(1.03);
     -o-transform: scale(1.03);
-}
-
-.product {
-    cursor: pointer;
 }

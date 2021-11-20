@@ -6,10 +6,12 @@
     <hr class="">
     <div class="products d-flex justify-content- overflow-auto my-2 py-2" style="position: relative;">
         <!-- <button>Prev</button> -->
-        <div routerLink="/view" class="card p-2 product text-center mx-2" *ngFor="let product of categories[category_name][0]">
-            <img src="{{ product.img || 'https://rukminim1.flixcart.com/image/543/652/jur9nrk0/shoe/k/b/a/wonder-1313-7-asian-grey-orange-original-imaffbmzjc5hmagy.jpeg?q=50' }}" alt="" style="height: 150px">
-            <h6 class="card-title mt-3">{{ product.name }}</h6>
-            <p class="text-danger">{{ (product.price / product.originalPrice) * 100 | number : '1.0-0' }}% off</p>
+        <div class="" *ngFor="let product of categories[category_name][0]">
+            <div class="card p-2 product text-center mx-2" routerLink="{{ '/view/' + product._id }}">
+                <img src="{{ product.img || 'https://rukminim1.flixcart.com/image/543/652/jur9nrk0/shoe/k/b/a/wonder-1313-7-asian-grey-orange-original-imaffbmzjc5hmagy.jpeg?q=50' }}" alt="" style="height: 150px">
+                <h6 class="card-title mt-3">{{ product.name }}</h6>
+                <p class="text-danger">{{ (product.price / product.originalPrice) * 100 | number : '1.0-0' }}% off</p>
+            </div>
         </div>
         <!-- <button>Next</button> -->
     </div>
