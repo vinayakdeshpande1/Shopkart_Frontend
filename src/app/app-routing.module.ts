@@ -30,11 +30,11 @@ const routes: Routes = [
   },
   {
     component: ViewAllPageComponent,
-    path: "category/:cat_name"
+    path: "category/:category"
   },
   {
+    path: "view/:productId",
     component: ViewComponent,
-    path: "view"
   },
   {
     path: "me",
