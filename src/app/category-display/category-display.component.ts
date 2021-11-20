@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { ProductService } from '../services/product.service';
 
 @Component({
   selector: 'app-category-display',
@@ -7,13 +8,43 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class CategoryDisplayComponent implements OnInit {
 
-  @Input() category_name: String = '';
-  @Input() category_img: String = '';
-  @Input() product_name: String = '';
-  constructor() { }
+  @Input() category_name: string = '';
+  @Input() category_img: string = '';
+  @Input() product_name: string = '';
+  @Input() category:any;
+
+  constructor(private productApi: ProductService) { 
+    this.displayProducts()
+    console.log(this.categories);
+  }
 
   ngOnInit(): void {
+    // console.log(this.category_name);
+    
+    // this.getProductsByCategory(this.category_name)
+    
+    
   }
 
   product = [1, 2, 3, 4, 5, 1, 1, 1, 1];
+  displayCategories = ['electronics', 'clothing', 'food']
+  categories:any = {
+    'electronics': [],
+    'clothing': [],
+    'food': []
+  }
+
+  async displayProducts() {
+    this.displayCategories.map(async (category) => {
+      this.categories[category].push(await this.getProductsByCategory(category))
+      // console.log(category , ": ", this.categories[category]);
+    })
+  }
+
+  async getProductsByCategory(category:string) {
+    category = category.toLowerCase()
+    let products = await this.productApi.fetchProductsByCategory(category)
+    // console.log(await products)
+    return products
+  }
 }
