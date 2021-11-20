@@ -1,0 +1,15 @@
+.cart-empty-img {
+    width: 200px;
+}
+
+.carts:hover {
+    box-shadow: 0 0 10px #ccc;
+}
+
+.cart-product > span {
+    width: 3ch;
+}
+
+.item-quantity {
+    width: 5ch;
+}

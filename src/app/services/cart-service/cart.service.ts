@@ -39,6 +39,21 @@ export class CartService {
       }) 
   }
 
+  async fetchPurchasedItems() {
+    return await fetch(`http://localhost:3300/cart/my-orders`, {
+      method: "post",
+      headers: {
+        'content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        token: this.auth.token
+      })
+    }).then(res => res.json())
+      .then(data => {
+        return data.cart
+      }) 
+  }
+
   async getCartDetails() {
     let products = await this.fetchCartItems()
 
@@ -70,7 +85,8 @@ export class CartService {
   }
 
   async myOrders() {
-    let products = await this.fetchCartItems()
+    let products = await this.fetchPurchasedItems()
+    // console.log("Products: ", products)
 
     let orderDetails = []
     for (let product of products) {
