@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CartService } from '../services/cart-service/cart.service';
 import { ProductService } from '../services/product.service';
 
@@ -9,10 +10,14 @@ import { ProductService } from '../services/product.service';
 })
 export class ViewComponent implements OnInit {
 
-  @Input() productId: String = '';
+  productId: string = this.router.snapshot.paramMap.get("productId") || "";
 
-  constructor(private cart: CartService, private productService: ProductService) {
-    this.fetchProduct('6196245ed886239259995b10')
+  constructor(
+    private cart: CartService, 
+    private productService: ProductService, 
+    private router: ActivatedRoute,
+    private route: Router) {
+    this.fetchProduct(this.productId)
     }
 
   ngOnInit(): void {
@@ -20,6 +25,8 @@ export class ViewComponent implements OnInit {
 
   addToCart(productID:string) {    
     this.cart.addToCart(productID);
+    alert("Product has been added to Cart")
+    this.route.navigateByUrl("/cart")
   }
 
   product:any = {
