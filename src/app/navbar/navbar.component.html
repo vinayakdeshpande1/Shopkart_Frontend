@@ -10,7 +10,7 @@
     </button>
     <div class="collapse navbar-collapse text-white fs-5" id="navbarSupportedContent">
       <form class="search-form d-flex flex-grow-1">
-        <input (keyup.enter)="redirectToSearch()" class="w-lg-100 form-control me-2 searchbox" type="search" placeholder="Search" aria-label="Search" name="searchTerm" [(ngModel)]="searchTerm">
+        <input (keyup.enter)="redirectToSearch()" class="w-lg-100 form-control me-2 searchbox" type="search" placeholder="Search" aria-label="Search" name="searchTerm" [(ngModel)]="searchTerm" autocomplete="off">
         <span (click)="redirectToSearch()"><i class="text-primary fas fa-search fs-4"></i></span>
       </form>
       <ul class="navbar-nav right-content align-items-center">
