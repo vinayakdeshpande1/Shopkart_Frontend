@@ -15,7 +15,7 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  displayCategories = ['electronics', 'clothing', 'food']
+  displayCategories = ['electronics', 'clothing', 'Top-Offers']
   // categories:any = []
   // async displayProducts() {
   //   this.displayCategories.map(async (category) => {

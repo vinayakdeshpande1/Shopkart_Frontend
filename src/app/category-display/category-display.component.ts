@@ -27,11 +27,11 @@ export class CategoryDisplayComponent implements OnInit {
   }
 
   product = [1, 2, 3, 4, 5, 1, 1, 1, 1];
-  displayCategories = ['electronics', 'clothing', 'food']
+  displayCategories = ['electronics', 'clothing', 'Top-Offers']
   categories:any = {
     'electronics': [],
     'clothing': [],
-    'food': []
+    'Top-Offers': []
   }
 
   async displayProducts() {
