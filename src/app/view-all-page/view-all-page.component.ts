@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CartService } from '../services/cart-service/cart.service';
@@ -10,7 +11,7 @@ import { ProductService } from '../services/product.service';
 })
 export class ViewAllPageComponent implements OnInit {
 
-  constructor(private productApi: ProductService, private route: ActivatedRoute, private cartApi: CartService) { 
+  constructor(private productApi: ProductService, private route: ActivatedRoute, private cartApi: CartService, private location: Location) { 
     this.getProducts()
   }
 
@@ -25,7 +26,9 @@ export class ViewAllPageComponent implements OnInit {
     alert("Product added to Cart")
   }
 
-  product = [1, 2, 3, 4, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5]
+  backToPreviousPage() {
+    this.location.back()
+  }
 
   async getProducts() {
     this.products = await this.productApi.fetchProductsByCategory(this.category_name)
