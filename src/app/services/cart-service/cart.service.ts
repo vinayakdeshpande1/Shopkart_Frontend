@@ -8,9 +8,10 @@ import { ProductService } from '../product.service';
 })
 export class CartService {
 
-  constructor(private auth: ApiService, private productService: ProductService) { }
+  constructor(private auth: ApiService, private productService: ProductService) { 
+  }
 
-  cartLength = new BehaviorSubject(0)
+  cartLength = new BehaviorSubject(this.getCartDetails().then(res => res.length))
   currentCartLength = this.cartLength.asObservable()
 
   updateCartLength(value:any) {

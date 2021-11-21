@@ -11,11 +11,13 @@ import { CartService } from '../services/cart-service/cart.service';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor(private api: ApiService, private router: Router, private cartApi: CartService) { }
+  constructor(private api: ApiService, private router: Router, private cartApi: CartService) { 
+    this.cartApi.currentCartLength.subscribe((cartLength) => this.thisCartLength = cartLength)
+  }
 
   user: string = ""
   searchTerm = ""
-  thisCartLength:number = 0
+  thisCartLength:any = 0
   
 
   ngOnInit(): void {
