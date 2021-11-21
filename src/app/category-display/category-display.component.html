@@ -1,7 +1,7 @@
 <div class="shadow-sm border border-1 p-2 m-2">
     <div class="d-flex justify-content-between align-items-center">
         <h4 class="category-name text-capitalize">{{ category }}</h4>
-        <button class="btn btn-primary text-light" routerLink="/category/{{category_name | lowercase}}">View All</button>
+        <button class="btn btn-primary" routerLink="/category/{{category_name | lowercase}}">View All</button>
     </div>
     <hr class="">
     <div class="products d-flex justify-content- overflow-auto my-2 py-2" style="position: relative;">
@@ -9,7 +9,7 @@
         <div class="" *ngFor="let product of categories[category_name][0]">
             <div style="min-width: 170px;" class="card p-2 product text-center mx-2" routerLink="{{ '/view/' + product._id }}">
                 <img src="{{ product.img || 'https://rukminim1.flixcart.com/image/543/652/jur9nrk0/shoe/k/b/a/wonder-1313-7-asian-grey-orange-original-imaffbmzjc5hmagy.jpeg?q=50' }}" alt="" style="height: 150px">
-                <h6 class="card-title mt-3">{{ product.name }}</h6>
+                <p class="h6 card-title mt-3">{{ product.name }}</p>
                 <p class="text-danger">{{ (product.price / product.originalPrice) * 100 | number : '1.0-0' }}% off</p>
             </div>
         </div>
