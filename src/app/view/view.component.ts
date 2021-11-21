@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CartService } from '../services/cart-service/cart.service';
@@ -17,7 +18,8 @@ export class ViewComponent implements OnInit {
     private cart: CartService,
     private productService: ProductService,
     private router: ActivatedRoute,
-    private route: Router) {
+    private route: Router,
+    private location: Location) {
       this.fetchProduct(this.productId)
       
       for (let i=0; i<5; i++) {
@@ -32,6 +34,10 @@ export class ViewComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  }
+
+  backToPreviousPage() {
+    this.location.back()
   }
 
   addToCart(productID: string) {

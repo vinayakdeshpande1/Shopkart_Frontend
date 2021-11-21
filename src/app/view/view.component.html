@@ -1,5 +1,8 @@
 <div class="container p-2 my-3">
-  <h2>{{ product.name || "Product Name" }}</h2>
+  <div class="d-flex justify-content-between">
+    <h2>{{ product.name || "Product Name" }}</h2>
+    <i (click)="backToPreviousPage()" class="h2 text-primary fas fa-arrow-left backButton" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Back to Previous Page"></i>
+  </div>
   <img
     src="{{ product.img || 'https://rukminim1.flixcart.com/image/543/652/jur9nrk0/shoe/k/b/a/wonder-1313-7-asian-grey-orange-original-imaffbmzjc5hmagy.jpeg?q=50' }}"
     class="card-img-top" alt="">

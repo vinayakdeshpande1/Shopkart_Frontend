@@ -1,5 +1,22 @@
 img {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-  }
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.backButton {
+  cursor: pointer;
+  transition: transform 300ms ease-out;
+  -webkit-transition: transform 300ms ease-out;
+  -moz-transition: transform 300ms ease-out;
+  -ms-transition: transform 300ms ease-out;
+  -o-transition: transform 300ms ease-out;
+}
+
+.backButton:hover {
+  transform: scaleX(1.2);
+  -webkit-transform: scaleX(1.2);
+  -moz-transform: scaleX(1.2);
+  -ms-transform: scaleX(1.2);
+  -o-transform: scaleX(1.2);
+}
