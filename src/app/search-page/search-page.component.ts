@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, SimpleChange, SimpleChanges } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from '../auth-service/api.service';
+import { CartService } from '../services/cart-service/cart.service';
 
 @Component({
   selector: 'app-search-page',
@@ -9,7 +10,7 @@ import { ApiService } from '../auth-service/api.service';
 })
 export class SearchPageComponent implements OnInit {
 
-  constructor(private router: ActivatedRoute, private auth: ApiService) {
+  constructor(private router: ActivatedRoute, private auth: ApiService, private cartApi: CartService) {
     router.params.subscribe(val => {
       this.searchTerm = this.router.snapshot.paramMap.get("searchTerm")
       this.searchProduct(this.searchTerm)
@@ -39,6 +40,11 @@ export class SearchPageComponent implements OnInit {
 
   askToLogin() {
     alert("Please login to continue")
+  }
+
+  addToCart(productId: string) {
+    this.cartApi.addToCart(productId)
+    alert("Product added to Cart")
   }
 
 }
