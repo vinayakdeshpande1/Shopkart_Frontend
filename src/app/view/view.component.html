@@ -24,24 +24,24 @@
         <span class="fa fa-star" [class]="i== 0 ? 'checked' : 'unchecked' "></span>
       </span>
     </div>
-    <button class="btn btn-primary ms-5" (click)="addToCart(product._id)">Add to Cart</button>
+    <button class="btn btn-primary ms-5" (click)="addToCart(product._id)" data-bs-toggle="modal" data-bs-target="#successModal">Add to Cart</button>
   </div>
 </div>
-<style>
-  .checked {
-    color: goldenrod;
-    font-size: 20px;
-  }
 
-  .unchecked {
-    font-size: 20px;
-  }
-
-  img {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 30%;
-  }
-
-</style>
+<div id="successModal" class="modal fade" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">{{ product.name || 'Product' }} has been added to Cart</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Make sure to place your order from the Cart. &hearts;</p>
+      </div>
+      <div class="modal-footer">
+        <!-- <button type="button" class="btn btn-primary" data-bs-dismiss="modal" routerLink="/cart">Okay</button> -->
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" routerLink="/cart">Go to Cart</button>
+      </div>
+    </div>
+  </div>
+</div>  

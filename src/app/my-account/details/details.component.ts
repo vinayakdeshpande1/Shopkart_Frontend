@@ -9,7 +9,7 @@ import { ApiService } from 'src/app/auth-service/api.service';
 export class DetailsComponent implements OnInit {
 
   constructor(private auth: ApiService) {
-    this.getUserDetails()    
+    this.getUserDetails()
 
   }
 
@@ -22,7 +22,7 @@ export class DetailsComponent implements OnInit {
   lastName: string = this.fullname.split(" ")[1] || ""
   gender: string = ''
   male: boolean = this.gender == "male"
-  female: boolean =  this.gender == "female"
+  female: boolean = this.gender == "female"
   email: string = ''
   phone: string = ''
 
@@ -77,14 +77,5 @@ export class DetailsComponent implements OnInit {
       alert("Something Went Wrong!")
     }
   }
-
-
-  // Show/Hide Toast
-  // funWithToast() {
-  //   let toastElList = [].slice.call(document.querySelectorAll('.toast'))
-  //   let toastList = toastElList.map(function (toastEl) {
-  //     return new bootstrap.Toast(toastEl, option)
-  //   })
-  // }
 
 }

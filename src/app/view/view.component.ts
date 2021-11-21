@@ -42,8 +42,8 @@ export class ViewComponent implements OnInit {
 
   addToCart(productID: string) {
     this.cart.addToCart(productID);
-    alert("Product has been added to Cart")
-    this.route.navigateByUrl("/cart")
+    // alert("Product has been added to Cart")
+    // this.route.navigateByUrl("/cart")
   }
 
   product: any = {

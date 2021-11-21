@@ -22,10 +22,6 @@ export class ViewAllPageComponent implements OnInit {
   products:any[] = []
   randomTime:string = Math.random().toFixed(2)
 
-  alertAddedToCart(){
-    alert("Product added to Cart")
-  }
-
   backToPreviousPage() {
     this.location.back()
   }
