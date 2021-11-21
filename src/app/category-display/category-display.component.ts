@@ -15,7 +15,7 @@ export class CategoryDisplayComponent implements OnInit {
 
   constructor(private productApi: ProductService) { 
     this.displayProducts()
-    console.log(this.categories);
+    // console.log(this.categories);
   }
 
   ngOnInit(): void {

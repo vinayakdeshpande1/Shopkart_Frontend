@@ -22,8 +22,8 @@ export class MyordersComponent implements OnInit {
   async getMyOrders() {
     this.orders = (await this.cartApi.myOrders()).orderDetails
     this.ordersLength = this.orders.length
-    console.log(this.orders);
-    console.log(this.orders.length);
+    // console.log(this.orders);
+    // console.log(this.orders.length);
   }
 
 }

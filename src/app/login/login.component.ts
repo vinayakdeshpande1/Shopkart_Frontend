@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
 
   async login($event:any) {
     // console.log(this.loginForm.value);
-    console.log(this.email, this.password);
+    // console.log(this.email, this.password);
     
     
     

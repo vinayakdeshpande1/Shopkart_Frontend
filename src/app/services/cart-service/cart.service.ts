@@ -15,7 +15,7 @@ export class CartService {
   currentCartLength = this.cartLength.asObservable()
 
   updateCartLength(value:any) {
-    console.log(value);
+    // console.log(value);
     this.cartLength.next(value)
   }
 

@@ -31,7 +31,7 @@ export class SearchPageComponent implements OnInit {
     fetch(`http://localhost:3300/search/${searchTerm}`)
       .then((response) => response.json())
       .then((data) => {
-        console.log(data)
+        // console.log(data)
 
         this.products = data.result
         this.numberOfProducts = data.length

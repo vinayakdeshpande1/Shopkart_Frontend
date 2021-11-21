@@ -29,7 +29,7 @@ export class ViewAllPageComponent implements OnInit {
   async getProducts() {
     this.products = await this.productApi.fetchProductsByCategory(this.category_name)
     this.randomTime = Math.random().toFixed(2)
-    console.log(this.products);
+    // console.log(this.products);
   }
 
   async addToCart(productId:string) {

@@ -25,7 +25,7 @@ export class CartComponent implements OnInit {
     this.cart = (await this.cartApi.getCartDetails()).cartDetails
     this.cartLength = this.cart.length
 
-    console.log(this.cart);
+    // console.log(this.cart);
     
   }
 
@@ -41,7 +41,7 @@ export class CartComponent implements OnInit {
         })
       }).then((res) => res.json())
         .then(data => {
-          console.log(data)
+          // console.log(data)
           item.quantity--
         })
     } else {
