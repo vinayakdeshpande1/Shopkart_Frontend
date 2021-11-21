@@ -1,7 +1,7 @@
 <div class="shadow-sm border border-1 p-2 m-2">
     <div class="d-flex justify-content-between align-items-center">
         <h4 class="category-name text-capitalize">{{ category }}</h4>
-        <button class="btn btn-primary text-light" routerLink="/category/{{category_name}}">View All</button>
+        <button class="btn btn-primary text-light" routerLink="/category/{{category_name | lowercase}}">View All</button>
     </div>
     <hr class="">
     <div class="products d-flex justify-content- overflow-auto my-2 py-2" style="position: relative;">
