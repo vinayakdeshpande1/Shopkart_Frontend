@@ -8,7 +8,10 @@ import { ApiService } from '../auth-service/api.service';
 })
 export class MyAccountComponent implements OnInit {
 
-  constructor(private api: ApiService) { }
+  user: string = ''
+  constructor(private api: ApiService) {
+    this.api.currentUser.subscribe(user => this.user = user)
+  }
 
   ngOnInit(): void {
   }
