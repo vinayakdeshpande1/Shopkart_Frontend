@@ -18,6 +18,7 @@ import { MyAccountComponent } from './my-account/my-account.component';
 import { MyordersComponent } from './my-account/myorders/myorders.component';
 import { DetailsComponent } from './my-account/details/details.component';
 import { SearchPageComponent } from './search-page/search-page.component';
+import { PaymentComponent } from './payment/payment.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { SearchPageComponent } from './search-page/search-page.component';
     MyordersComponent,
     DetailsComponent,
     SearchPageComponent,
+    PaymentComponent,
   ],
   imports: [
     BrowserModule,

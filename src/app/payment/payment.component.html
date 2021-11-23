@@ -1,0 +1,71 @@
+<section class="card p-3 d-flex justify-content-center flex-grow-1 h-100 mx-auto my-4" style="width: fit-content;">
+  <form (submit)="placeOrder()">
+      <div class="input-goup">
+        <h6 class="mb-3">Personal Details</h6>
+        <input type="text" aria-label="First name" class="form-control-inline mx-1 px-2 py-3" [value]="firstName" readonly
+          aria-readonly="true" required disabled>
+        <input type="text" aria-label="Last name" class="form-control-inline mx-1 px-2 py-3" [value]="lastName" readonly
+          aria-readonly="true" required disabled>
+      </div>
+    
+      <div class="d-flex flex-wrap">
+          <div class="input-roup mt-3 mx-1">
+            <label for="email" class="h6 d-block mb-3">Email</label>
+            <input class="form-control-input px-2 py-3" type="email" name="email" id="email" [value]="email" readonly
+              aria-readonly="true" required disabled>
+          </div>
+        
+          <div class="input-roup mt-3 mx-1">
+            <label for="phone" class="h6 d-block mb-3">Mobile Number</label>
+            <input class="form-control-input px-2 py-3" type="tel" name="phone" id="phone" [value]="phone" readonly
+              aria-readonly="true" required disabled>
+          </div>
+      </div>
+    
+      <div class="d-flex flex-wrap">
+          <div class="input-roup mt-3 mx-1">
+            <label for="address" class="h6 d-block mb-3">Address</label>
+            <input class="form-control-input px-2 py-3" type="text" name="address" id="address" [ngModel]="address.city" placeholder="Your address"
+              aria-readonly="true" required>
+          </div>
+          <div class="input-roup mt-3 mx-1">
+            <label for="state" class="h6 d-block mb-3">State</label>
+            <input class="form-control-input px-2 py-3" type="text" name="state" id="state" [ngModel]="address.state" placeholder="Your address"
+              aria-readonly="true" required>
+          </div>
+      </div>
+    
+      <div class="d-flex flex-wrap">
+          <div class="input-roup mt-3 mx-1">
+            <label for="account" class="h6 d-block mb-3">Bank Account Number</label>
+            <input class="form-control-input px-2 py-3" type="number" name="account" id="account" [value]="account" placeholder="Account Number"
+              aria-readonly="true" required>
+          </div>
+          <div class="input-roup mt-3 mx-1">
+            <label for="cvv" class="h6 d-block mb-3">CVV</label>
+            <input class="form-control-input px-2 py-3" type="number" pattern="[0-9]{3}" name="cvv" id="cvv" [value]="cvv" placeholder="CVV"
+              aria-readonly="true" min="100" max="999" required>
+          </div>
+      </div>
+    
+      <button type="submit" class="btn btn-primary mt-5 py-3 fw-bold" data-bs-toggle="modal" data-bs-target="#successModal" style="width: fit-content;">PAY &#8377; {{ amount }}/-</button>
+  </form>
+
+  <div id="successModal" class="modal fade" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Order Successfull!</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>Thank you for shopping with us. &hearts;</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal" routerLink="/">Okay</button>
+        </div>
+      </div>
+    </div>
+  </div>  
+
+</section>

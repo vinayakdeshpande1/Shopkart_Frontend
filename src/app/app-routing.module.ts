@@ -10,6 +10,7 @@ import { MyAccountComponent } from './my-account/my-account.component';
 import { MyordersComponent } from './my-account/myorders/myorders.component';
 import { DetailsComponent } from './my-account/details/details.component';
 import { SearchPageComponent } from './search-page/search-page.component';
+import { PaymentComponent } from './payment/payment.component';
 
 const routes: Routes = [
   {
@@ -39,6 +40,10 @@ const routes: Routes = [
   {
     path: "me",
     redirectTo: "me/details",
+  },
+  {
+    path: "pay",
+    component: PaymentComponent
   },
   {
     path: "me",
