@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ApiService } from '../auth-service/api.service';
 
 @Component({
@@ -9,7 +10,10 @@ import { ApiService } from '../auth-service/api.service';
 export class MyAccountComponent implements OnInit {
 
   user: string = ''
-  constructor(private api: ApiService) {
+  constructor(private api: ApiService, private router: Router) {
+    if (!this.api.isLoggedIn) {
+      this.router.navigateByUrl("/")
+    }
     this.api.currentUser.subscribe(user => this.user = user)
   }
 

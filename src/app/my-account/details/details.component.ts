@@ -48,8 +48,6 @@ export class DetailsComponent implements OnInit {
           this.male = this.gender == "male"
           this.female = this.gender == "female"
         })
-    } else {
-      alert("Something Went Wrong!")
     }
   }
 
