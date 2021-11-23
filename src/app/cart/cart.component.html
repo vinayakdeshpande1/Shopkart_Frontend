@@ -42,25 +42,10 @@
         <p class="ms-2 mb-0 text-danger">Order Total: <span class="ms-2" style="color: #222;">Rs. {{ orderTotal().total }}/-</span><span class="ms-2 text-decoration-line-through text-muted fw-normal" style="color: #222;">Rs. {{ orderTotal().originalTotal }}/-</span></p>
         <p class="small ms-2 text-muted">You save Rs. {{ orderTotal().originalTotal - orderTotal().total }}/-</p>
       </div>
-      <button class="btn btn-danger my-3 py-2 px-5" (click)="placeOrder()" data-bs-toggle="modal" data-bs-target="#successModal">Place Order</button>
+      <button class="btn btn-danger my-3 py-2 px-5" routerLink="/pay">Place Order</button>
     </div>
   </ng-template>
 </div>
 
 
-<div id="successModal" class="modal fade" tabindex="-1">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Order Successfull!</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <p>Thank you for shopping with us. &hearts;</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" routerLink="/">Okay</button>
-      </div>
-    </div>
-  </div>
-</div>  
+

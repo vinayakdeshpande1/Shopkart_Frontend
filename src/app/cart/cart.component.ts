@@ -104,8 +104,4 @@ export class CartComponent implements OnInit {
     }
   }
 
-  placeOrder() {
-    this.cartApi.placeOrder()
-  }
-
 }
