@@ -25,6 +25,15 @@ export class DetailsComponent implements OnInit {
   female: boolean = this.gender == "female"
   email: string = ''
   phone: string = ''
+  editMode: boolean = true;
+
+  toggleEdit() {
+    if (this.editMode) {
+      this.editMode = false
+    } else {
+      this.editMode = true
+    }
+  }
 
   async getUserDetails() {
     if (this.auth.isLoggedIn) {
