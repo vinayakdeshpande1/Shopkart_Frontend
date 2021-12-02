@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiService } from '../auth-service/api.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { hostedAPI } from '../global.variables';
 
 @Component({
   selector: 'app-login',
@@ -32,7 +33,7 @@ export class LoginComponent implements OnInit {
     
     
     
-    await fetch("http://localhost:3300/login", {
+    await fetch(`${hostedAPI}/login`, {
       method: "post",
       headers: {
         'content-Type': "application/json"

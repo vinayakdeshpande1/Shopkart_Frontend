@@ -1,7 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../auth-service/api.service';
 import { CartService } from '../services/cart-service/cart.service';
+import { hostedAPI } from '../global.variables';
 
 @Component({
   selector: 'app-cart',
@@ -31,7 +31,7 @@ export class CartComponent implements OnInit {
 
   decreaseItemCount(item: any) {
     if (item.quantity > 1) {
-      fetch(`http://localhost:3300/cart/increase/-1/${item.product._id}`, {
+      fetch(`${hostedAPI}/cart/increase/-1/${item.product._id}`, {
         method: "post",
         headers: {
           'content-Type': "application/json"
@@ -50,7 +50,7 @@ export class CartComponent implements OnInit {
   }
 
   increaseItemCount(item: any) {
-    fetch(`http://localhost:3300/cart/increase/1/${item.product._id}`, {
+    fetch(`${hostedAPI}/cart/increase/1/${item.product._id}`, {
       method: "post",
       headers: {
         'content-Type': "application/json"
@@ -66,7 +66,7 @@ export class CartComponent implements OnInit {
   }
 
   async removeFromCart(productId: any) {
-    await fetch(`http://localhost:3300/cart/remove/${productId}`, {
+    await fetch(`${hostedAPI}/cart/remove/${productId}`, {
       method: "post",
       headers: {
         'content-Type': "application/json"

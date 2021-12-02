@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { ApiService } from 'src/app/auth-service/api.service';
+import { hostedAPI } from 'src/app/global.variables';
 import { ProductService } from '../product.service';
 
 @Injectable({
@@ -20,7 +21,7 @@ export class CartService {
   }
 
   addToCart(productId: string) {
-    fetch(`http://localhost:3300/cart/add/${productId}`, {
+    fetch(`${hostedAPI}/cart/add/${productId}`, {
       method: "post",
       headers: {
         'content-Type': 'application/json'
@@ -35,7 +36,7 @@ export class CartService {
   }
 
   async fetchCartItems() {
-    return await fetch(`http://localhost:3300/cart`, {
+    return await fetch(`${hostedAPI}/cart`, {
       method: "post",
       headers: {
         'content-Type': 'application/json'
@@ -53,7 +54,7 @@ export class CartService {
   }
 
   async fetchPurchasedItems() {
-    return await fetch(`http://localhost:3300/cart/my-orders`, {
+    return await fetch(`${hostedAPI}/cart/my-orders`, {
       method: "post",
       headers: {
         'content-Type': 'application/json'
@@ -86,7 +87,7 @@ export class CartService {
   }
 
   async placeOrder() {
-    return await fetch(`http://localhost:3300/cart/place-order`, {
+    return await fetch(`${hostedAPI}/cart/place-order`, {
       method: "post",
       headers: {
         'content-Type': 'application/json'

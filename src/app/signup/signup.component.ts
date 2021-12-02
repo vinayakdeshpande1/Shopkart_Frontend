@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiService } from '../auth-service/api.service';
+import { hostedAPI } from '../global.variables';
 
 @Component({
   selector: 'app-signup',
@@ -21,7 +22,7 @@ export class SignupComponent implements OnInit {
 
   register() {
     if (this.password === this.confirmPassword) {
-      fetch("http://localhost:3300/register", {
+      fetch(`${hostedAPI}/register`, {
         method: "post",
         headers: {
           'content-Type': "application/json"
@@ -35,7 +36,7 @@ export class SignupComponent implements OnInit {
       })
         .then((response => response.json()))
         .then(async (data) => {
-          await fetch("http://localhost:3300/login", {
+          await fetch(`${hostedAPI}/login`, {
             method: "post",
             headers: {
               'content-Type': "application/json"

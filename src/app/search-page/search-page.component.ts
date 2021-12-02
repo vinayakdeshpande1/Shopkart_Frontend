@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, SimpleChange, SimpleChanges } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from '../auth-service/api.service';
+import { hostedAPI } from '../global.variables';
 import { CartService } from '../services/cart-service/cart.service';
 
 @Component({
@@ -28,7 +29,7 @@ export class SearchPageComponent implements OnInit {
   }
 
   searchProduct(searchTerm: any) {
-    fetch(`http://localhost:3300/search/${searchTerm}`)
+    fetch(`${hostedAPI}/search/${searchTerm}`)
       .then((response) => response.json())
       .then((data) => {
         // console.log(data)

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/auth-service/api.service';
+import { hostedAPI } from 'src/app/global.variables';
 
 @Component({
   selector: 'app-details',
@@ -37,7 +38,7 @@ export class DetailsComponent implements OnInit {
 
   async getUserDetails() {
     if (this.auth.isLoggedIn) {
-      await fetch("http://localhost:3300/user", {
+      await fetch(`${hostedAPI}/user`, {
         method: "post",
         headers: {
           'content-Type': "application/json"
@@ -62,7 +63,7 @@ export class DetailsComponent implements OnInit {
 
   async updateUserInfo() {
     if (this.auth.isLoggedIn) {
-      await fetch("http://localhost:3300/user/update", {
+      await fetch(`${hostedAPI}/user/update`, {
         method: "post",
         headers: {
           'content-Type': "application/json"

@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiService } from '../auth-service/api.service';
+import { hostedAPI } from '../global.variables';
 import { CartService } from '../services/cart-service/cart.service';
 
 @Component({
@@ -59,7 +60,7 @@ export class PaymentComponent implements OnInit {
 
   async getUserDetails() {
     if (this.auth.isLoggedIn) {
-      await fetch("http://localhost:3300/user", {
+      await fetch(`${hostedAPI}/user`, {
         method: "post",
         headers: {
           'content-Type': "application/json"
